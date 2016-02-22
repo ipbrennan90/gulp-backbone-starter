@@ -1,19 +1,17 @@
-import './asyncModules'
-import exclaimify from './exclaimify'
 
-const button = document.getElementById('button')
 
-const alertAsyncMessage = function() {
-  // CommonJS async syntax webpack magic
-  require.ensure([], function() {
-    const message = require("./asyncMessage")
-    alert(exclaimify(message))
-  })
-}
+'use strict';
 
-console.log(`
-  asset references like this one:
-    images/gulp.png
-  get updated in js too!`)
+var $ = require('jquery');
+var Backbone = require('backbone');
+var Router = require('routers/router');
+var app = require('helpers/app');
 
-button.addEventListener('click', alertAsyncMessage)
+window.$ = $;
+window.jQuery = $;
+
+Backbone.$ = $;
+
+var router = new Router();
+
+Backbone.history.start();
